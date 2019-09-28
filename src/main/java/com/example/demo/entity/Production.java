@@ -5,18 +5,19 @@ import lombok.Data;
 import javax.persistence.*;
 import java.util.Date;
 
+@Data
+
 @Entity
 @Table(name = "production")
-@Data
 public class Production {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    @ManyToOne
-    @JoinTable(name = "producer_id")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id")
     private Producer producer;
-    @ManyToOne
-    @JoinTable(name = "product_id")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id")
     private Product product;
     @Column
     private Date date;

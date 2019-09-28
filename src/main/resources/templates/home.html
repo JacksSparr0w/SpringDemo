@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>PBZ lab 2</title>
+
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+</head>
+<body>
+<div class="container-fluid">
+    <div class="container list-inline" style="margin: 5rem">
+        <button type="button" class="btn btn-success" onclick="window.confirm('products')">Products</button>
+        <button type="button" class="btn btn-success" onclick="window.confirm('producers')">Producers</button>
+    </div>
+</div>
+</body>
+</html>
