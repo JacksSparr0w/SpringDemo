@@ -44,8 +44,8 @@ public class ProductionRepositoryTest {
         producer.setHeadName("headName");
         producer.setAddress("address");
         producer.setHeadPosition("headPosition");
-        producer.setPhoneMarketingDepartment(12345678L);
-        producer.setPhoneMarketingHead(98765432L);
+        producer.setPhoneMarketingDepartment(145678L);
+        producer.setPhoneMarketingHead(987652L);
         producer.setContactName("contactName");
         producerRepository.save(producer);
 

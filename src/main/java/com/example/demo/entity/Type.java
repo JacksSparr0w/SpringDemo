@@ -9,8 +9,8 @@ import javax.persistence.*;
 @Table(name = "type")
 public class Type {
     @Id
-    @GeneratedValue
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     @Column()
     private String name;
 }
