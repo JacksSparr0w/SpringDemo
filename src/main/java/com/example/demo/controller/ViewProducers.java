@@ -16,14 +16,16 @@ import java.util.List;
 @Controller
 @RequestMapping(value = "/producers")
 public class ViewProducers {
-    public static final String PRODUCERS = "producers";
+    private static final String PRODUCERS = "producers";
     @Autowired
     private ProducerService producerService;
 
     @GetMapping
     public String producers(Model model) {
-        model.addAllAttributes(readProducers());
+        List<Producer> producers = readProducers();
+        model.addAttribute(PRODUCERS, producers);
         log.log(Level.INFO, "producers was add to model");
+
         return PRODUCERS;
     }
 

@@ -1,10 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>producers</title>
+    <title>PBZ lab 2</title>
+
+    <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+    <script src="/webjars/momentjs/2.24.0/moment.js"></script>
+    <link href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-
+<div class="container">
+    <div class="d-flex justify-content-center mt-5">
+        <a href="/addProducer" class="btn btn-outline-secondary m-2">Add producer</a>
+        <a href="/" class="btn-outline-secondary btn m-2">Back</a>
+    </div>
+</div>
+<div class="container">
+    <div th:each="product : ${producers}">
+        <div class="list-inline">
+            <p th:href="@{/home.html}" th:value="${product.id}">id</p>
+            <p th:value="${product.name}">name</p>
+            <p th:value="${product.address}">address</p>
+            <p th:value="${product.phone}">phone</p>
+            <p th:value="${product.headName}">head name</p>
+            <p th:value="${product.headPosition}">head position</p>
+            <p th:value="${product.phoneMarketingDepartment}">pmd</p>
+            <p th:value="${product.phoneMarketingHead}">pmh</p>
+            <p th:value="${product.contactName}">contact name</p>
+        </div>
+    </div>
+</div>
 </body>
 </html>

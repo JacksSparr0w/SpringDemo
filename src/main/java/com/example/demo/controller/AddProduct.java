@@ -29,7 +29,9 @@ public class AddProduct {
 
     @GetMapping
     public String getPage(Model model) {
-        model.addAllAttributes(readTypes());
+        List<Type> types = readTypes();
+        model.addAttribute("types", types);
+        model.addAttribute("product", new Product());
         return ADD_PRODUCT;
     }
 
@@ -40,7 +42,7 @@ public class AddProduct {
     @PostMapping
     public String addProduct(@Valid Product product, Errors errors) {
         if (errors.hasErrors()) {
-            return "addProduct";
+            return ADD_PRODUCT;
         }
 
         saveProduct(product);

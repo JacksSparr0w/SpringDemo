@@ -4,16 +4,18 @@
 <head>
     <title>PBZ lab 2</title>
 
-    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
-    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
-    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+    <script src="/webjars/momentjs/2.24.0/moment.js"></script>
+    <link href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
 
 </head>
 <body>
 <div class="container-fluid">
-    <div class="container list-inline" style="margin: 5rem">
-        <button type="button" class="btn btn-success" onclick="window.confirm('products')">Products</button>
-        <button type="button" class="btn btn-success" onclick="window.confirm('producers')">Producers</button>
+    <div class="d-flex justify-content-center mt-5">
+        <a href="/products" class="btn btn-outline-secondary m-2">Products</a>
+        <a href="/producers" class="btn-outline-secondary btn m-2">Producers</a>
     </div>
 </div>
 </body>

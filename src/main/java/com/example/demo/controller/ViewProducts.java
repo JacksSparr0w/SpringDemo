@@ -22,7 +22,8 @@ public class ViewProducts {
 
     @GetMapping
     public String products(Model model) {
-        model.addAllAttributes(readProducts());
+        List<Product> products = readProducts();
+        model.addAttribute(PRODUCTS, products);
         log.log(Level.INFO, "products was add to model");
 
         return PRODUCTS;

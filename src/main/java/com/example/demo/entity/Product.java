@@ -5,6 +5,7 @@ import lombok.Data;
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Data
 @Entity
@@ -19,9 +20,10 @@ public class Product {
     private String name;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id")
+    @NotNull(message = "choose type")
     private Type type;
     @Column
-    @Digits(integer = 1, fraction = 0, message = "invalid price")
+    @Digits(integer = 3, fraction = 0, message = "invalid price")
     //todo read about digits
     private int price;
 }
