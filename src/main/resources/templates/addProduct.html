@@ -16,25 +16,25 @@
     </div>
 </div>
 <div class="container">
-    <form method="post" th:action="@{/addProduct}" th:object="${product}">
+    <form method="post" th:object="${product}">
         <div>
             <div class="container p-2">
-                <label>Select type of new product</label>
-                    <select th:field="*{type}">
+                <label>Select type of product</label>
+                    <select class="form-control" th:field="*{type.id}">
                         <option th:each="type : ${types}"
-                                th:value="${type}"
+                                th:value="${type.id}"
                                 th:text="${type.name}">Type
 
                         </option>
                     </select>
             </div>
             <div class="container p-2">
-                <label for="name">Name of new product</label>
-                <input type="text" th:field="*{name}" id="name"/>
+                <label for="name">Name of product</label>
+                <input type="text" th:field="*{name}" th:value="*{name}" id="name"/>
             </div>
             <div class="container p-2">
                 <label for="price">Price of new product</label>
-                <input type="number" th:field="*{price}" id="price"/>
+                <input type="number" min="0" th:field="*{price}" th:value="*{price}" id="price"/>
             </div>
         </div>
         <button class="btn btn-outline-success p-2" type="submit">Save product</button>

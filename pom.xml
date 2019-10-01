@@ -79,6 +79,11 @@
             <artifactId>momentjs</artifactId>
             <version>2.24.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.webjars.bower</groupId>
+            <artifactId>bootstrap-daterangepicker</artifactId>
+            <version>3.0.5</version>
+        </dependency>
     </dependencies>
 
 

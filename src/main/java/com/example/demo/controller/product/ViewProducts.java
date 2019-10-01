@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+package com.example.demo.controller.product;
 
 import com.example.demo.entity.Product;
 import com.example.demo.service.ProductService;
@@ -17,8 +17,12 @@ import java.util.List;
 @RequestMapping(value = "/products")
 public class ViewProducts {
     private static final String PRODUCTS = "products";
+    private final ProductService productService;
+
     @Autowired
-    private ProductService productService;
+    public ViewProducts(ProductService productService) {
+        this.productService = productService;
+    }
 
     @GetMapping
     public String products(Model model) {

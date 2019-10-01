@@ -12,24 +12,47 @@
 <body>
 <div class="container">
     <div class="d-flex justify-content-center mt-5">
-        <a href="/addProducer" class="btn btn-outline-secondary m-2">Add producer</a>
+        <a href="/producer/add" class="btn btn-outline-secondary m-2">Add producer</a>
         <a href="/" class="btn-outline-secondary btn m-2">Back</a>
     </div>
 </div>
 <div class="container">
-    <div th:each="product : ${producers}">
-        <div class="list-inline">
-            <p th:href="@{/home.html}" th:value="${product.id}">id</p>
-            <p th:value="${product.name}">name</p>
-            <p th:value="${product.address}">address</p>
-            <p th:value="${product.phone}">phone</p>
-            <p th:value="${product.headName}">head name</p>
-            <p th:value="${product.headPosition}">head position</p>
-            <p th:value="${product.phoneMarketingDepartment}">pmd</p>
-            <p th:value="${product.phoneMarketingHead}">pmh</p>
-            <p th:value="${product.contactName}">contact name</p>
-        </div>
-    </div>
+    <table class="table pt-5">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">NAME</th>
+            <th scope="col">ADDRESS</th>
+            <th scope="col">PHONE</th>
+            <th scope="col">CONTACT NAME</th>
+            <th scope="col">HEAD NAME</th>
+            <th scope="col">HEAD POSITION</th>
+            <th scope="col">PMD</th>
+            <th scope="col">PMH</th>
+            <th scope="col">ACTIONS</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="producer : ${producers}">
+            <th scope="row" th:text="${producer.id}">id</th>
+            <td th:text="${producer.name}">name</td>
+            <td th:text="${producer.address}">address</td>
+            <td th:text="${producer.phone}">phone</td>
+            <td th:text="${producer.contactName}">contactName</td>
+            <td th:text="${producer.headName}">head name</td>
+            <td th:text="${producer.headPosition}">head position</td>
+            <td th:text="${producer.phoneMarketingDepartment}">pmd</td>
+            <td th:text="${producer.phoneMarketingHead}">pmh</td>
+            <td>
+                <a th:href="@{/producer/{id}/productions(id=${producer.id})}">Productions</a>
+                <a>|</a>
+                <a th:href="@{/producer/{id}/update(id=${producer.id})}">Edit</a>
+                <a>|</a>
+                <a th:href="@{/producer/{id}/delete(id=${producer.id})}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 </body>
 </html>

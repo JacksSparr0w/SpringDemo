@@ -12,7 +12,7 @@
 <body>
 <div class="container">
     <div class="d-flex justify-content-center mt-5">
-        <a href="/product/add" class="btn btn-outline-secondary m-2">Add product</a>
+        <a th:href="@{/production/add}" class="btn btn-outline-secondary m-2">Add production</a>
         <a href="/" class="btn-outline-secondary btn m-2">Back</a>
     </div>
 </div>
@@ -21,24 +21,26 @@
         <thead>
         <tr>
             <th scope="col">ID</th>
-            <th scope="col">NAME</th>
+            <th scope="col">PRODUCT NAME</th>
+            <th scope="col">PRODUCER NAME</th>
+            <th scope="col">DATE</th>
+            <th scope="col">PLACE</th>
             <th scope="col">PRICE</th>
-            <th scope="col">TYPE</th>
             <th scope="col">ACTIONS</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="product : ${products}">
-            <th scope="row" th:text="${product.id}">1</th>
-            <td th:text="${product.name}">Mark</td>
-            <td th:text="${product.price}">Otto</td>
-            <td th:text="${product.type.name}">@mdo</td>
+        <tr th:each="production : ${productions}">
+            <th scope="row" th:text="${production.id}">1</th>
+            <td th:text="${production.product.name}">Mark</td>
+            <td th:text="${production.producer.name}">Otto</td>
+            <td th:text="${production.date}">@mdo</td>
+            <td th:text="${production.place}">@mdo</td>
+            <td th:text="${production.product.price}">@mdo</td>
             <td>
-                <a th:href="@{/product/{id}/productions(id=${product.id})}">Productions</a>
+                <a th:href="@{/production/{id}/update(id=${production.id})}">Edit</a>
                 <a>|</a>
-                <a th:href="@{/product/{id}/update(id=${product.id})}">Edit</a>
-                <a>|</a>
-                <a th:href="@{/product/{id}/delete(id=${product.id})}">Delete</a>
+                <a th:href="@{/production/{id}/delete(id=${production.id})}">Delete</a>
             </td>
         </tr>
         </tbody>

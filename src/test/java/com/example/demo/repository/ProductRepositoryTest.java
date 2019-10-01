@@ -22,14 +22,15 @@ public class ProductRepositoryTest {
     public void successSave() {
         Type type = new Type();
         type.setName("name");
+        Integer id = typeRepository.save(type).getId();
         typeRepository.save(type);
-
         Product product = new Product();
         product.setName("name");
-        product.setType(type);
+        typeRepository.findById(id).ifPresent(product::setType);
 
         productRepository.save(product);
 
         System.out.println(productRepository.findAll());
+        System.out.println(typeRepository.findAll());
     }
 }

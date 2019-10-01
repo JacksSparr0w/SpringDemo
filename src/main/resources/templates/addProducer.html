@@ -1,10 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>add producer</title>
+    <title>PBZ lab 2</title>
+
+    <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+    <script src="/webjars/momentjs/2.24.0/moment.js"></script>
+    <link href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
+<div class="container">
+    <div class="d-flex justify-content-center mt-5">
+        <a href="/producers" class="btn-outline-secondary btn m-2">Producers</a>
+    </div>
+</div>
+<div class="container">
 
+    <form method="post" th:object="${producer}">
+        <div>
+            <div class="container p-2">
+                <label for="name">Name of producer</label>
+                <input type="text" th:field="*{name}" th:value="*{name}" id="name"/>
+            </div>
+            <div class="container p-2">
+                <label for="address">Address of producer</label>
+                <input type="text" th:field="*{address}" th:value="*{address}" id="address"/>
+            </div>
+            <div class="container p-2">
+                <label for="phone">phone of product (7 digits max)</label>
+                <input type="number" min="0" th:field="*{phone}" th:value="*{phone}" id="phone"/>
+            </div>
+            <div class="container p-2">
+                <label for="contactName">Contact name of producer</label>
+                <input type="text" th:field="*{contactName}" th:value="*{contactName}" id="contactName"/>
+            </div>
+            <div class="container p-2">
+                <label for="headName">Head name of producer</label>
+                <input type="text" th:field="*{headName}" th:value="*{headName}" id="headName"/>
+            </div>
+            <div class="container p-2">
+                <label for="headPos">Head position of producer</label>
+                <input type="text" th:field="*{headPosition}" th:value="*{headPosition}" id="headPos"/>
+            </div>
+            <div class="container p-2">
+                <label for="pmd">phone marketing department of product (7 digits max)</label>
+                <input type="number" min="0" th:field="*{phoneMarketingDepartment}" th:value="*{phoneMarketingDepartment}" id="pmd"/>
+            </div>
+            <div class="container p-2">
+                <label for="pmh">phone marketing head of product (7 digits max)</label>
+                <input type="number" min="0" th:field="*{phoneMarketingHead}" th:value="*{phoneMarketingHead}" id="pmh"/>
+            </div>
+        </div>
+        <button class="btn btn-outline-success p-2" type="submit">Save producer</button>
+    </form>
+</div>
 </body>
 </html>

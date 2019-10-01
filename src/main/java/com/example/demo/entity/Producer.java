@@ -15,7 +15,7 @@ import javax.validation.constraints.NotBlank;
 public class Producer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     @Column
     @NotBlank(message = "name can't be null")
     private String name;

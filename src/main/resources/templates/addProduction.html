@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>PBZ lab 2</title>
+
+    <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+    <script src="/webjars/momentjs/2.24.0/moment.js"></script>
+    <link href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="/webjars/bootstrap-daterangepicker/3.0.5/daterangepicker.js"></script>
+    <link href="/webjars/bootstrap-daterangepicker/3.0.5/daterangepicker.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <div class="d-flex justify-content-center mt-5">
+        <a href="/products" class="btn-outline-secondary btn m-2">Products</a>
+        <a href="/producers" class="btn-outline-secondary btn m-2">Producers</a>
+
+    </div>
+</div>
+<div class="container">
+    <form method="post" th:object="${production}">
+        <div>
+            <div class="container p-2">
+                <label>Select product</label>
+                <select class="form-control" th:field="*{product.id}">
+                    <option th:each="product : ${products}"
+                            th:value="${product.id}"
+                            th:text="${product.name}"
+                            th:selected="${production.product.id == product.id}">Product
+                    </option>
+                </select>
+            </div>
+
+            <div class="container p-2">
+                <label>Select producer</label>
+                <select class="form-control" th:field="*{producer.id}">
+                    <option th:each="producer : ${producers}"
+                            th:value="${producer.id}"
+                            th:text="${producer.name}"
+                            th:selected="${production.producer.id == producer.id}">Producer
+                    </option>
+                </select>
+            </div>
+
+            <div class="container p-2">
+                <label for="place">Place</label>
+                <input type="text" th:field="*{place}" th:value="*{place}" id="place"/>
+            </div>
+
+            <div class="row mb-3">
+                <label for="date">Date</label>
+                <input type="text" class="form-control" th:field="*{date}" th:value="*{date}" name="date" id="date">
+                <script>
+                    $('input[name="date"]').daterangepicker({
+                        "singleDatePicker": true,
+                        "locale": {
+                            "format": "DD-MM-YYYY",
+                            "separator": " - ",
+                            "applyLabel": "Apply",
+                            "cancelLabel": "Cancel",
+                            "fromLabel": "From",
+                            "toLabel": "To",
+                            "customRangeLabel": "Custom",
+                            "weekLabel": "W",
+                            "daysOfWeek": [
+                                "Su",
+                                "Mo",
+                                "Tu",
+                                "We",
+                                "Th",
+                                "Fr",
+                                "Sa"
+                            ],
+                            "monthNames": [
+                                "January",
+                                "February",
+                                "March",
+                                "April",
+                                "May",
+                                "June",
+                                "July",
+                                "August",
+                                "September",
+                                "October",
+                                "November",
+                                "December"
+                            ],
+                            "firstDay": 1
+                        }
+                    }, function (start, end, label) {
+                        console.log('New date range selected: ' + start.format('YYYY-MM-DD HH:mm') + ' to ' + end.format('YYYY-MM-DD HH:mm') + ' (predefined range: ' + label + ')');
+                    });
+                </script>
+            </div>
+
+        </div>
+        <button class="btn btn-outline-success p-2" type="submit">Save product</button>
+    </form>
+</div>
+</body>
+</html>

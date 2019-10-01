@@ -10,7 +10,7 @@ import java.util.Date;
 @Table(name = "price_list")
 public class PriceList {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(name = "date_from")
     private Date dateFrom;

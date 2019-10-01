@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+package com.example.demo.controller.producer;
 
 import com.example.demo.entity.Producer;
 import com.example.demo.service.ProducerService;
@@ -17,8 +17,12 @@ import java.util.List;
 @RequestMapping(value = "/producers")
 public class ViewProducers {
     private static final String PRODUCERS = "producers";
+    private final ProducerService producerService;
+
     @Autowired
-    private ProducerService producerService;
+    public ViewProducers(ProducerService producerService) {
+        this.producerService = producerService;
+    }
 
     @GetMapping
     public String producers(Model model) {

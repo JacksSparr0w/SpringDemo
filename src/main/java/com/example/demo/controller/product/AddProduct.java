@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+package com.example.demo.controller.product;
 
 import com.example.demo.entity.Product;
 import com.example.demo.entity.Type;
@@ -16,22 +16,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @Log4j2
 @Controller
-@RequestMapping(value = "/addProduct")
+@RequestMapping(value = "/product/add")
 public class AddProduct {
     private static final String ADD_PRODUCT = "addProduct";
+    private final ProductService productService;
+    private final TypeService typeService;
+
     @Autowired
-    private ProductService productService;
-    @Autowired
-    private TypeService typeService;
+    public AddProduct(ProductService productService, TypeService typeService) {
+        this.productService = productService;
+        this.typeService = typeService;
+    }
 
     @GetMapping
     public String getPage(Model model) {
-        List<Type> types = readTypes();
-        model.addAttribute("types", types);
+        model.addAttribute("types", readTypes());
         model.addAttribute("product", new Product());
+        model.addAttribute("aim", "add");
         return ADD_PRODUCT;
     }
 
@@ -44,10 +49,14 @@ public class AddProduct {
         if (errors.hasErrors()) {
             return ADD_PRODUCT;
         }
-
+        findType(product.getType().getId()).ifPresent(product::setType);
         saveProduct(product);
         log.log(Level.INFO, "product has been saved " + product);
         return "redirect:/products";
+    }
+
+    private Optional<Type> findType(Integer id) {
+        return typeService.findById(id);
     }
 
     private void saveProduct(Product product) {
