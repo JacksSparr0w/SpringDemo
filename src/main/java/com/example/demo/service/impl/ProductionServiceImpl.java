@@ -13,8 +13,12 @@ import java.util.Optional;
 
 @Service
 public class ProductionServiceImpl implements ProductionService {
+    private final ProductionRepository repository;
+
     @Autowired
-    private ProductionRepository repository;
+    public ProductionServiceImpl(ProductionRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
     public List<Production> findAllByProducerOOrderByProduct(Producer producer) {

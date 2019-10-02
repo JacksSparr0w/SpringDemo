@@ -12,8 +12,12 @@ import java.util.Optional;
 @Service
 public class ProducerServiceImpl implements ProducerService {
 
+    private final ProducerRepository repository;
+
     @Autowired
-    private ProducerRepository repository;
+    public ProducerServiceImpl(ProducerRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
     public Producer save(Producer entity) {

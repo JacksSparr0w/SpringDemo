@@ -1,6 +1,7 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.entity.PriceList;
+import com.example.demo.entity.Type;
 import com.example.demo.repository.PriceListRepository;
 import com.example.demo.service.PriceListService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,12 +14,16 @@ import java.util.Optional;
 @Service
 public class PriceListServiceImpl implements PriceListService {
 
+    private final PriceListRepository repository;
+
     @Autowired
-    private PriceListRepository repository;
+    public PriceListServiceImpl(PriceListRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
-    public Optional<PriceList> findFirstByDateFromBeforeDateAndDateToAfter(Date date) {
-        return repository.findFirstByDateFromLessThanEqualAndDateToGreaterThanEqual(date);
+    public Optional<PriceList> findFirstByTypeAndDateFromLessThanEqualAndDateToGreaterThanEqual(Date date, Type type) {
+        return repository.findFirstByTypeAndDateFromLessThanEqualAndDateToGreaterThanEqual(date, type);
     }
 
     @Override

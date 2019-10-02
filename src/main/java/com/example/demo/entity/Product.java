@@ -28,7 +28,12 @@ public class Product {
     @NotNull(message = "choose type")
     private Type type;
     @Column
-    @Digits(integer = 3, fraction = 0, message = "invalid price")
-    //todo read about digits
-    private int price;
+    @Digits(integer = 3, fraction = 1, message = "invalid price")
+    private double price;
+    @Transient
+    private double actualPrice;
+
+    public void updateActualPrice(Double coefficient) {
+        actualPrice = price * coefficient;
+    }
 }
