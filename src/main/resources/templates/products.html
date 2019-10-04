@@ -23,7 +23,6 @@
             <th scope="col">ID</th>
             <th scope="col">NAME</th>
             <th scope="col">PRICE</th>
-            <th scope="col">ACTUAL PRICE</th>
             <th scope="col">TYPE</th>
             <th scope="col">ACTIONS</th>
         </tr>
@@ -33,7 +32,6 @@
             <th scope="row" th:text="${product.id}">1</th>
             <td th:text="${product.name}">name</td>
             <td th:text="${product.price}">price</td>
-            <td th:text="${#numbers.formatDecimal(product.actualPrice,1,2)}">actual price</td>
             <td th:text="${product.type.name}">type</td>
             <td>
                 <a th:href="@{/product/{id}/productions(id=${product.id})}">Productions</a>

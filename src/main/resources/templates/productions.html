@@ -32,11 +32,12 @@
         <tbody>
         <tr th:each="production : ${productions}">
             <th scope="row" th:text="${production.id}">1</th>
-            <td th:text="${production.product.name}">Mark</td>
-            <td th:text="${production.producer.name}">Otto</td>
-            <td th:text="${production.date}">@mdo</td>
-            <td th:text="${production.place}">@mdo</td>
-            <td th:text="${production.product.price}">@mdo</td>
+            <td th:text="${production.product.name}">product name</td>
+            <td th:text="${production.producer.name}">producer name</td>
+            <td th:text="${production.date}">date</td>
+            <td th:text="${production.place}">place</td>
+            <td th:text="${#numbers.formatDecimal(production.product.actualPrice,1,2)}">actual price</td>
+
             <td>
                 <a th:href="@{/production/{id}/update(id=${production.id})}">Edit</a>
                 <a>|</a>

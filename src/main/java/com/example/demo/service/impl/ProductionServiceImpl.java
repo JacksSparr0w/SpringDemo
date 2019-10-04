@@ -6,6 +6,7 @@ import com.example.demo.entity.Production;
 import com.example.demo.repository.ProductionRepository;
 import com.example.demo.service.ProductionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,13 +22,13 @@ public class ProductionServiceImpl implements ProductionService {
     }
 
     @Override
-    public List<Production> findAllByProducerOOrderByProduct(Producer producer) {
-        return repository.findAllByProducerOrderByProduct(producer);
+    public List<Production> findAllByProducer(Producer producer) {
+        return repository.findAllByProducer(producer, Sort.by("product.type"));
     }
 
     @Override
     public List<Production> findAllByProduct(Product product) {
-        return repository.findAllByProduct(product);
+        return repository.findAllByProduct(product.getId());
     }
 
     @Override

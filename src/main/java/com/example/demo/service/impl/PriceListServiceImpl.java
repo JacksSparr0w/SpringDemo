@@ -1,6 +1,7 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.entity.PriceList;
+import com.example.demo.entity.Producer;
 import com.example.demo.entity.Type;
 import com.example.demo.repository.PriceListRepository;
 import com.example.demo.service.PriceListService;
@@ -22,8 +23,8 @@ public class PriceListServiceImpl implements PriceListService {
     }
 
     @Override
-    public Optional<PriceList> findFirstByTypeAndDateFromLessThanEqualAndDateToGreaterThanEqual(Date date, Type type) {
-        return repository.findFirstByTypeAndDateFromLessThanEqualAndDateToGreaterThanEqual(date, type);
+    public Optional<PriceList> findByProducerAndTypeAndDate(Producer producer, Type type, Date date) {
+        return repository.findByProducerAndTypeAndDate(producer, type, date);
     }
 
     @Override

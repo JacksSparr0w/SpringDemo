@@ -3,7 +3,6 @@ package com.example.demo.entity;
 import lombok.Data;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Data
@@ -24,8 +23,15 @@ public class PriceList {
             CascadeType.REFRESH
     })
     @JoinColumn(name = "type_id")
-    @NotNull(message = "choose type")
     private Type type;
+    @OneToOne(cascade = {
+            CascadeType.DETACH,
+            CascadeType.MERGE,
+            CascadeType.PERSIST,
+            CascadeType.REFRESH
+    })
+    @JoinColumn(name = "producer_id")
+    private Producer producer;
     @Column
     private Double coefficient;
 }

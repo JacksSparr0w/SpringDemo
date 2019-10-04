@@ -7,7 +7,7 @@ import com.example.demo.entity.Production;
 import java.util.List;
 
 public interface ProductionService extends Service<Production> {
-    List<Production> findAllByProducerOOrderByProduct(Producer producer);
+    List<Production> findAllByProducer(Producer producer);
 
     List<Production> findAllByProduct(Product product);
 }
