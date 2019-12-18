@@ -6,7 +6,9 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -22,6 +24,16 @@ public class Order {
     private String content;
     @Column
     private Date startDate;
-    @Column
-    private Date owner;
+    @ManyToOne(cascade = {
+            CascadeType.DETACH,
+            CascadeType.MERGE,
+            CascadeType.PERSIST,
+            CascadeType.REFRESH
+    })
+    @NotNull(message = "choose correspondent")
+    private Correspondent correspondent;
+
+    @OneToMany
+    @JoinColumn(name = "order_id")
+    private List<Event> events;
 }

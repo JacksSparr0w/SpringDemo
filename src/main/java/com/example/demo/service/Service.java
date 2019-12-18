@@ -7,13 +7,13 @@ public interface Service<T> {
 
     T save(T entity);
 
-    Optional<T> findById(Integer id);
+    Optional<T> findById(Long id);
 
-    boolean existsById(Integer id);
+    boolean existsById(Long id);
 
     List<T> findAll();
 
-    void deleteById(Integer id);
+    void deleteById(Long id);
 
     void delete(T entity);
 

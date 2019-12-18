@@ -6,6 +6,8 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
 
 @Data
 @NoArgsConstructor
@@ -20,13 +22,17 @@ public class Event {
     @Column
     private String name;
     @Column
-    private long startDate;
+    private LocalDate startDate;
     @Column
-    private long endDate;
-    @Column
-    private long corespondentID;
-    @Column
-    private long orderID;
+    private LocalDate endDate;
+    @ManyToOne(cascade = {
+            CascadeType.DETACH,
+            CascadeType.MERGE,
+            CascadeType.PERSIST,
+            CascadeType.REFRESH
+    })
+    @NotNull(message = "choose order")
+    private Order order;
     @Column
     private boolean completed;
 }
